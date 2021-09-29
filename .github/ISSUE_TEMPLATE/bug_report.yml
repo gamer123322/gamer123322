@@ -1,39 +1,62 @@
-name: Other
-description: Use this for any other issues. PLEASE do not create blank issues
-title: "[OTHER]"
-labels: ["awaiting triage"]
+name: Bug Report
+description: File a bug report
+title: "[Bug]: "
+labels: ["bug", "triage"]
+assignees:
+  - octocat
 body:
   - type: markdown
     attributes:
-      value: "# Other issue"
-  - type: textarea
-    id: issuedescription
+      value: |
+        Thanks for taking the time to fill out this bug report!
+  - type: input
+    id: contact
     attributes:
-      label: What would you like to share?
-      description: Provide a clear and concise explanation of your issue.
-    validations:
-      required: true
-  - type: textarea
-    id: extrainfo
-    attributes:
-      label: Additional information
-      description: Is there anything else we should know about this issue?
+      label: Contact Details
+      description: How can we get in touch with you if we need more info?
+      placeholder: ex. email@example.com
     validations:
       required: false
-  - type: checkboxes
-    id: consent
+  - type: textarea
+    id: what-happened
     attributes:
-      label: Would you like to work on this issue?
-      description: Check this if you want else leave that
-      options:
-        - label: Yes
-          required: false
-  - type: checkboxes
-    id: cat-preferences
+      label: What happened?
+      description: Also tell us, what did you expect to happen?
+      placeholder: Tell us what you see!
+      value: "A bug happened!"
+    validations:
+      required: true
+  - type: dropdown
+    id: version
     attributes:
-      label: What kinds of cats do you like?
-      description: You may select more than one.
+      label: Version
+      description: What version of our software are you running?
       options:
-        - label: Orange cat
+        - 1.0.2 (Default)
+        - 1.0.3 (Edge)
+    validations:
+      required: true
+  - type: dropdown
+    id: browsers
+    attributes:
+      label: What browsers are you seeing the problem on?
+      multiple: true
+      options:
+        - Firefox
+        - Chrome
+        - Safari
+        - Microsoft Edge
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant log output
+      description: Please copy and paste any relevant log output. This will be automatically formatted into code, so no need for backticks.
+      render: shell
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Code of Conduct
+      description: By submitting this issue, you agree to follow our [Code of Conduct](https://example.com)
+      options:
+        - label: I agree to follow this project's Code of Conduct
           required: true
-        - label: **Black cat**
